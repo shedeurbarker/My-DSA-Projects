@@ -1,18 +1,26 @@
 package src;
 
+import java.util.Arrays;
+
 public class Search {
 
     int[] myArrays;
     int position;
+    long runtime = 0;
+    static long startTime = 0;
+    static long endTime = 0;
 
     public Search(int[] values) {
         this.myArrays = values;
     }
 
     public boolean linearSearch(int key) {
+        startTime = System.nanoTime();
         for (int i = 0; i < myArrays.length; i++) {
             if (myArrays[i] == key) {
                 position = i;
+                endTime = System.nanoTime();
+                runtime = (endTime - startTime);
                 return true;
             }
         }
@@ -21,19 +29,23 @@ public class Search {
 
     public boolean binarySearch(int key) {
         // works on Sorted list
-        Sorting sorting = new Sorting(myArrays);
-        myArrays = sorting.bubbleSort();        // array sorted using bubble sort
-        int start = 0;
-        int end = myArrays.length - 1;
-        while (0 <= end) {
-            int mid = start + (start - end) / 2;
-            if (myArrays[mid] == key) {         // key was found
+        startTime = System.nanoTime();
+        Sorting sorting = new Sorting();
+        myArrays = sorting.bubbleSort(myArrays);        // array sorted using bubble sort
+        System.out.println("Numbers Sorted: " + Arrays.toString(myArrays));
+        int left = 0;
+        int right = myArrays.length - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (myArrays[mid] == key) {
                 position = mid;
+                endTime = System.nanoTime();
+                runtime = (endTime - startTime);
                 return true;
             } else if (myArrays[mid] < key) {
-                end = mid + 1;
+                left = mid + 1;
             } else {
-                start = mid - 1;
+                right = mid - 1;
             }
         }
         return false;
@@ -41,5 +53,9 @@ public class Search {
 
     public int getPosition() {
         return position;
+    }
+
+    public long getRuntime() {
+        return runtime;
     }
 }
