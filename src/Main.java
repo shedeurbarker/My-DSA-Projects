@@ -8,7 +8,7 @@ public class Main {
 
     private static int[] userArray;
     static Scanner scanner = new Scanner(System.in);
-    static int totalDefaultValues = 500;
+    static int totalDefaultValues = 10;
     private static final int[] defaultValues = new int[totalDefaultValues];
 
 
@@ -127,8 +127,7 @@ public class Main {
             System.out.println("1. Press 1 for Bubble Sort");
             System.out.println("2. Press 2 for Selection Sort");
             System.out.println("3. Press 3 for Insertion Sort");
-            System.out.println("4. Press 4 for Merge Sort");
-            System.out.println("5. Press 5 for Quick Sort");
+//            System.out.println("4. Press 4 for Merge Sort"); System.out.println("5. Press 5 for Quick Sort");
             System.out.println("0. Press 0 to go back");
 
             System.out.print("Your Choice: ");
@@ -154,10 +153,28 @@ public class Main {
                             System.out.println("SORTED USING INSERTION SORT");
                             sorted = sorting.insertionSort(copyArray(userArray));
                         }
-                        case "4" -> System.out.println("Sorted Using Merge Sort");
+                        case "4" -> {
+                            int left;
+                            int right;
+                            System.out.println("Enter Left Index");
+                            left = scanner.nextInt();
+                            System.out.println("Enter Right Index");
+                            right = scanner.nextInt();
+                            System.out.println("SORTED USING MERGE SORT");
+                            sorted = sorting.mergeSort(copyArray(userArray), left, right);
+                        }
 
                         //sorted = sorting.mergeSort();
-                        case "5" -> System.out.println("Sorted Using Quick Sort");
+                        case "5" -> {
+                            int low;
+                            int high;
+                            System.out.println("Enter Low Value");
+                            low = scanner.nextInt();
+                            System.out.println("Enter High Value");
+                            high = scanner.nextInt();
+                            System.out.println("SORTED USING QUICK SORT");
+                            sorted = sorting.quickSort(copyArray(userArray), low, high);
+                        }
 
                         // sorted = sorting.quickSort();
                     }

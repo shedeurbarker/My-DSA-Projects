@@ -25,7 +25,6 @@ public class Sorting {
     public int[] selectionSort(int[] myArrays) {
         startTime = System.nanoTime();
         int n = myArrays.length;
-        int[] sortedArray = new int[n];
         for (int i = 0; i < n - 1; i++) {
             int minIndex = i;
             for (int j = i + 1; j < n; j++) {
@@ -59,54 +58,65 @@ public class Sorting {
         return myArrays;
     }
 
-    public void mergeSort(int[] myArrays, int left, int right) {
-        if (left < right) {
-            int mid = (left + right) / 2;
-            mergeSort(myArrays, left, mid);
-            mergeSort(myArrays, mid + 1, right);
-            merge(myArrays, left, mid, right);
-        }
+    public int[] mergeSort(int[] arr, int left, int right) {
+        startTime = System.nanoTime();
+    if (left < right) {
+        int mid = (left + right) / 2;
+        arr = mergeSort(arr, left, mid);
+        arr = mergeSort(arr, mid + 1, right);
+        arr = merge(arr, left, mid, right);
     }
-
-    public void merge(int[] myArrays, int left, int mid, int right) {
-        int n1 = mid - left + 1;
-        int n2 = right - mid;
-        int[] L = new int[n1];
-        int[] R = new int[n2];
-        System.arraycopy(myArrays, left, L, 0, n1);
-        for (int j = 0; j < n2; j++) {
-            R[j] = myArrays[mid + 1 + j];
-        }
-        int i = 0, j = 0, k = left;
-        while (i < n1 && j < n2) {
-            if (L[i] <= R[j]) {
-                myArrays[k] = L[i];
-                i++;
-            } else {
-                myArrays[k] = R[j];
-                j++;
-            }
-            k++;
-        }
-        while (i < n1) {
-            myArrays[k] = L[i];
-            i++;
-            k++;
-        }
-        while (j < n2) {
-            myArrays[k] = R[j];
-            j++;
-            k++;
-        }
-    }
-
-    public void quickSort(int[] myArrays, int low, int high) {
-    if (low < high) {
-        int pi = partition(myArrays, low, high);
-        quickSort(myArrays, low, pi - 1);
-        quickSort(myArrays, pi + 1, high);
-    }
+        endTime = System.nanoTime();
+        runtime = (endTime - startTime);
+    return arr;
 }
+ public int[] merge(int[] arr, int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+    int[] L = new int[n1];
+    int[] R = new int[n2];
+     //noinspection ManualArrayCopy
+     for (int i = 0; i < n1; i++) {
+        L[i] = arr[left + i];
+    }
+    for (int j = 0; j < n2; j++) {
+        R[j] = arr[mid + 1 + j];
+    }
+    int i = 0, j = 0, k = left;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+    return arr;
+}
+
+    public int[] quickSort(int[] myArrays, int low, int high) {
+        startTime = System.nanoTime();
+        if (low < high) {
+            int pi = partition(myArrays, low, high);
+            quickSort(myArrays, low, pi - 1);
+            quickSort(myArrays, pi + 1, high);
+        }
+        endTime = System.nanoTime();
+        runtime = (endTime - startTime);
+        return myArrays;
+    }
 
     public int partition(int[] myArrays, int low, int high) {
         int pivot = myArrays[high];
