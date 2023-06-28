@@ -70,7 +70,8 @@ public class Sorting {
         runtime = (endTime - startTime);
     return arr;
 }
- public int[] merge(int[] arr, int left, int mid, int right) {
+
+    public int[] merge(int[] arr, int left, int mid, int right) {
     int n1 = mid - left + 1;
     int n2 = right - mid;
     int[] L = new int[n1];

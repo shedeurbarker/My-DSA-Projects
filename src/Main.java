@@ -8,7 +8,7 @@ public class Main {
 
     private static int[] userArray;
     static Scanner scanner = new Scanner(System.in);
-    static int totalDefaultValues = 10;
+    static int totalDefaultValues = 20;
     private static final int[] defaultValues = new int[totalDefaultValues];
 
 
@@ -16,7 +16,7 @@ public class Main {
 
         System.out.println("##########################################");
         System.out.println("#       Hello there and Welcome!         #");
-        System.out.println("#       My Name is Anthony Barker        #");
+        System.out.println("#               GROUP 47                 #");
         System.out.println("#   THE SEARCHING AND SORTING ALGORITHM  #");
         System.out.println("##########################################");
         System.out.println();
