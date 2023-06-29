@@ -8,7 +8,7 @@ public class Main {
 
     private static int[] userArray;
     static Scanner scanner = new Scanner(System.in);
-    static int totalDefaultValues = 20;
+    static int totalDefaultValues = 10;
     private static final int[] defaultValues = new int[totalDefaultValues];
 
 
@@ -92,6 +92,7 @@ public class Main {
                             }
                             else {
                                 System.out.println("Sorry, the number " + key + " was NOT in the Values you provided");
+                                System.out.println("Took Approximately: " + search.getRuntime() + " nanoseconds");
                             }
                             System.out.println();
                             System.out.print("Try another number( or 'q' to go back): ");
@@ -127,7 +128,10 @@ public class Main {
             System.out.println("1. Press 1 for Bubble Sort");
             System.out.println("2. Press 2 for Selection Sort");
             System.out.println("3. Press 3 for Insertion Sort");
-//            System.out.println("4. Press 4 for Merge Sort"); System.out.println("5. Press 5 for Quick Sort");
+            System.out.println("4. Press 4 for Merge Sort");
+            System.out.println("5. Press 5 for Quick Sort");
+            System.out.println("6. Press 6 for Radix Sort");
+            System.out.println("7. Press 7 for Shell Sort");
             System.out.println("0. Press 0 to go back");
 
             System.out.print("Your Choice: ");
@@ -135,25 +139,25 @@ public class Main {
             System.out.println();
 
             if(isInteger(choice)) {
-                if(Integer.parseInt(choice) > 0 && Integer.parseInt(choice) < 6) {  // options available
+                if(Integer.parseInt(choice) > 0 && Integer.parseInt(choice) < 8) {  // options available
                     System.out.println("Current Array: " + Arrays.toString(userArray));
                     System.out.println();
                     int[] sorted = new int[userArray.length];
                     switch (choice) {
-                        case "1" -> {
+                        case "1":
                             System.out.println("SORTED USING BUBBLE SORT");
                             sorted = sorting.bubbleSort(copyArray(userArray));
-
-                        }
-                        case "2" -> {
+                            break;
+                        case "2":
                             System.out.println("SORTED USING SELECTION SORT");
                             sorted = sorting.selectionSort(copyArray(userArray));
-                        }
-                        case "3" -> {
+                            break;
+                        case "3":
                             System.out.println("SORTED USING INSERTION SORT");
                             sorted = sorting.insertionSort(copyArray(userArray));
-                        }
-                        case "4" -> {
+
+                            break;
+                        case "4":
                             int left;
                             int right;
                             System.out.println("Enter Left Index");
@@ -162,10 +166,9 @@ public class Main {
                             right = scanner.nextInt();
                             System.out.println("SORTED USING MERGE SORT");
                             sorted = sorting.mergeSort(copyArray(userArray), left, right);
-                        }
-
-                        //sorted = sorting.mergeSort();
-                        case "5" -> {
+                            break;
+                        case "5":
+//sorted = sorting.mergeSort();
                             int low;
                             int high;
                             System.out.println("Enter Low Value");
@@ -174,10 +177,17 @@ public class Main {
                             high = scanner.nextInt();
                             System.out.println("SORTED USING QUICK SORT");
                             sorted = sorting.quickSort(copyArray(userArray), low, high);
-                        }
-
-                        // sorted = sorting.quickSort();
+                            break;
+                        case "6":
+                            System.out.println("SORTED USING RADIX SORT");
+                            sorted = sorting.radixSort(copyArray(userArray));
+                            break;
+                        case "7":
+                            System.out.println("SORTED USING SHELL SORT");
+                            sorted = sorting.shellSort(copyArray(userArray));
+                            break;
                     }
+
                     System.out.println("New Array: " + Arrays.toString(sorted));
                     System.out.println("Took Approximately: " + sorting.getRuntime() + " nanoseconds");
                 }

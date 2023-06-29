@@ -1,5 +1,7 @@
 package src;
 
+import java.util.Arrays;
+
 public class Sorting {
     long runtime = 0;
     static long startTime = 0;
@@ -134,6 +136,70 @@ public class Sorting {
         myArrays[i + 1] = myArrays[high];
         myArrays[high] = temp;
         return i + 1;
+    }
+
+    public int[] radixSort(int[] arr) {
+        startTime = System.nanoTime();
+// Find the maximum number to determine the number of digits
+        int max = Arrays.stream(arr).max().getAsInt();
+
+        // Perform counting sort for every digit
+        for (int exp = 1; max / exp > 0; exp *= 10) {
+            countingSort(arr, exp);
+        }
+        endTime = System.nanoTime();
+        runtime = (endTime - startTime);
+        return arr;
+    }
+
+    public void countingSort(int[] arr, int exp) {
+        int n = arr.length;
+        int[] output = new int[n];
+        int[] count = new int[10];
+
+        // Initialize count array
+        Arrays.fill(count, 0);
+
+        // Count the occurrences of each digit
+        for (int j : arr) {
+            count[(j / exp) % 10]++;
+        }
+
+        // Calculate cumulative count
+        for (int i = 1; i < 10; i++) {
+            count[i] += count[i - 1];
+        }
+
+        // Build the output array
+        for (int i = n - 1; i >= 0; i--) {
+            output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+            count[(arr[i] / exp) % 10]--;
+        }
+
+        // Copy the output array to the original array
+        System.arraycopy(output, 0, arr, 0, n);
+    }
+
+    public int[] shellSort(int[] arr) {
+        startTime = System.nanoTime();
+        int n = arr.length;
+        // Start with a large gap, then reduce the gap
+        for (int gap = n / 2; gap > 0; gap /= 2) {
+            // Perform insertion sort for elements at the current gap
+            for (int i = gap; i < n; i++) {
+                int temp = arr[i];
+                int j;
+
+                for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
+                    arr[j] = arr[j - gap];
+                }
+
+                arr[j] = temp;
+            }
+        }
+        endTime = System.nanoTime();
+        runtime = (endTime - startTime);
+        return arr;
     }
 
     public long getRuntime() {

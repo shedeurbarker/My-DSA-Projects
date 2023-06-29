@@ -32,7 +32,8 @@ public class Search {
         startTime = System.nanoTime();
         Sorting sorting = new Sorting();
         myArrays = sorting.bubbleSort(myArrays);        // array sorted using bubble sort
-        System.out.println("Numbers Sorted: " + Arrays.toString(myArrays));
+        System.out.println("Array First Sorted Using Bubble Sort: " + Arrays.toString(myArrays));
+        System.out.println();
         int left = 0;
         int right = myArrays.length - 1;
         while (left <= right) {
