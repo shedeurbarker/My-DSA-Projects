@@ -108,7 +108,8 @@ public class Main {
                     String shortenedValue = decimalFormat.format(shortestDistance);
                     System.out.println("Distance is Apprx. " + shortenedValue + "km");
 
-//                    double arrivalTime = calculator.calculateArrivalTime(source, destination);
+                    arrivalTime = calculator.calculateArrivalTime(source, destination);
+                    System.out.println("Arrival Time. " + arrivalTime + "");
                     List<Edge> connections = graph.getAdjacencyList().get(source);
                     double distance = 0.0;
                     double speed = 0.0;
@@ -141,19 +142,19 @@ public class Main {
                 System.out.println("Choose the right destinations");
             }
         }
-
-//        List<List<Integer>> bestPaths = solver.getBestThreeShortestPaths(source, destination);
-//        System.out.print("Shortest Path from " + solver.locationNames[source] + " to " +
-//                solver.locationNames[destination] + ": ");
-//        for (int vertex : shortestPath) {
-//            System.out.print(solver.locationNames[vertex] + " -> ");
-//        }
-//        System.out.println();
-
-
-//        System.out.println("Best Three Shortest Paths to " + solver.locationNames[destination] + ": ");
-
 /*
+        List<List<Integer>> bestPaths = ShortestPath.getBestThreeShortestPaths(destination);
+        System.out.print("Shortest Path from " + locations()[source] + " to " +
+                locations()[destination] + ": ");
+        for (int vertex : shortestPath.getShortestPath(destination)) {
+            System.out.print(locations()[vertex] + " -> ");
+        }
+        System.out.println();
+
+
+        System.out.println("Best Three Shortest Paths to " + locations()[destination] + ": ");
+
+
         if (bestPaths.isEmpty()) {
             System.out.println("No paths found.");
         }
@@ -163,8 +164,8 @@ public class Main {
                 StringBuilder pathBuilder = new StringBuilder();
 
                 for (int vertex : path) {
-                    if (vertex >= 0 && vertex < solver.locationNames.length) {
-                        pathBuilder.append(solver.locationNames[vertex]).append(" -> ");
+                    if (vertex >= 0 && vertex < locations().length) {
+                        pathBuilder.append(locations()[vertex]).append(" -> ");
                     }
                 }
 
@@ -174,7 +175,7 @@ public class Main {
                 }
             }
         }
-        */
+*/
     }
 
     public static class Solver {

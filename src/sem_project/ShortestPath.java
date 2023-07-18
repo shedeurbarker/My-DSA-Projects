@@ -53,8 +53,8 @@ public class ShortestPath {
         }
         return path;
     }
-
-    public List<List<Integer>> getBestThreeShortestPaths(int destination) {
+/*
+    public static List<List<Integer>> getBestThreeShortestPaths(int destination) {
         List<List<Integer>> bestPaths = new ArrayList<>();
 
         if (distances[destination] == Integer.MAX_VALUE) {
@@ -86,7 +86,7 @@ public class ShortestPath {
 
         return bestPaths;
     }
-
+*/
     static class Node {
         private final int vertex;
         private final double distance;
