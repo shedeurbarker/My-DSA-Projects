@@ -1,4 +1,4 @@
-package src;
+package src.search_sort;
 
 import java.util.Arrays;
 import java.util.Random;

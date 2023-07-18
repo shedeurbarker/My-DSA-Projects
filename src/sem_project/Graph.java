@@ -1,4 +1,4 @@
-package src.transport;
+package src.sem_project;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +15,8 @@ public class Graph {
         }
     }
 
-    public void addEdge(int source, int destination, double weight) {
-        Edge edge = new Edge(destination, weight);
+    public void addEdge(int source, int destination, double weight, double speed) {
+        Edge edge = new Edge(destination, weight, speed);
         adjacencyList.get(source).add(edge);
     }
 
