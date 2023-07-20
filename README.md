@@ -24,7 +24,6 @@ We chose 24 different locations on the campus.
 **How it Works**<br />
 1. User is given a long list of location to choose a source and destination using the indexes
 2. The applications calculate the shortest distances and the time of arrivals.
-3. 
 
 
 
