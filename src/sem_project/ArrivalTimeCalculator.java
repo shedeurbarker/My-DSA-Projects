@@ -17,11 +17,9 @@ public class ArrivalTimeCalculator {
         double speed = 0.0;
         for (Edge connection : connections) {
             int connDestination = connection.getDestination();
-            System.out.println("Dest: " + connDestination);
             if(connDestination == destination) {
                 distance = connection.getWeight();
                 speed = connection.getSpeed();
-                System.out.println("Distance: " + distance);
             }
         }
 

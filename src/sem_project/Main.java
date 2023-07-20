@@ -11,10 +11,6 @@ public class Main {
     static int destination = 0;
     static Graph graph;
 
-//    public void addEdge(int source, int destination, double weight, double speed) {
-//        graph.addEdge(source, destination, weight, speed);
-//    }
-
     public static List<Integer> findShortestPath(int source, int destination) {
         shortestPath.findShortestPath(source);
         return shortestPath.getShortestPath(destination);
@@ -25,11 +21,6 @@ public class Main {
         return shortestPath.getShortestDistance(destination);
     }
 
-//    public List<List<Integer>> getBestThreeShortestPaths(int source, int destination) {
-//        shortestPath.findShortestPath(source);
-//        return shortestPath.getBestThreeShortestPaths(destination);
-//    }
-
     public static void main(String[] args) {
 
         graph = new Graph(vertices);
@@ -39,12 +30,6 @@ public class Main {
         shortestPath = new ShortestPath(graph);
 
         ArrivalTimeCalculator calculator = new ArrivalTimeCalculator(mySolverPackaged);
-
-        // Initialize the adjacency list
-//        adjacencyList = new ArrayList<>(vertices);
-//        for (int i = 0; i < vertices; i++) {
-//            adjacencyList.add(new ArrayList<>());
-//        }
 
         // Find the shortest path from source to destination
         // User Interactions
@@ -86,22 +71,6 @@ public class Main {
                         path.append(locations()[shortestPath.get(i)]);
                         if(i < (shortestPath.size() -1))
                             path.append(" -> ");
-
-                        List<Edge> connections = graph.getAdjacencyList().get(source);
-//                        System.out.println("Dest: " + connections.get(0).getSpeed());
-//                        double distance;
-//                        double speed;
-//                        for (Edge connection : connections) {
-//                            int connDestination = connection.getDestination();
-//
-//                            if(connDestination == destination) {
-//                                distance = connection.getWeight();
-//                                speed = connection.getSpeed();
-//                                System.out.println("Distance: " + distance);
-//                                arrivalTime += distance / speed;
-//                                break;
-//                            }
-//                        }
                     }
                     System.out.println(path);
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
@@ -109,30 +78,8 @@ public class Main {
                     System.out.println("Distance is Apprx. " + shortenedValue + "km");
 
                     arrivalTime = calculator.calculateArrivalTime(source, destination);
-                    System.out.println("Arrival Time. " + arrivalTime + "");
-                    List<Edge> connections = graph.getAdjacencyList().get(source);
-                    double distance = 0.0;
-                    double speed = 0.0;
-
-//                    for (Edge connection : connections) {
-//                        int connDestination = connection.getDestination();
-//                        System.out.println("Dest: " + connDestination);
-//                        if(connDestination == destination) {
-//                            distance = connection.getWeight();
-//                            speed = connection.getSpeed();
-//                            System.out.println("Distance: " + distance);
-//                            arrivalTime = distance / speed;
-//                            break;
-//                        }
-//                    }
-//                    System.out.println("Arrival time to destination: " + arrivalTime + " hours");
-
-//                    List<List<Integer>> bestPaths = solver.getBestThreeShortestPaths(source, destination);
-////                    System.out.println(bestPaths.toString());
-//                    for (List<Integer> vertex : bestPaths) {
-//                        //for(int v : vertex)
-//                        System.out.println(vertex + " -> ");
-//                    }
+                    shortenedValue = decimalFormat.format(arrivalTime);
+                    System.out.println("Arrival Time. " + shortenedValue + "m");
                 }
                 else {
                     System.out.println("Choose the right starting location");
@@ -142,40 +89,6 @@ public class Main {
                 System.out.println("Choose the right destinations");
             }
         }
-/*
-        List<List<Integer>> bestPaths = ShortestPath.getBestThreeShortestPaths(destination);
-        System.out.print("Shortest Path from " + locations()[source] + " to " +
-                locations()[destination] + ": ");
-        for (int vertex : shortestPath.getShortestPath(destination)) {
-            System.out.print(locations()[vertex] + " -> ");
-        }
-        System.out.println();
-
-
-        System.out.println("Best Three Shortest Paths to " + locations()[destination] + ": ");
-
-
-        if (bestPaths.isEmpty()) {
-            System.out.println("No paths found.");
-        }
-        else {
-            for (List<Integer> path : bestPaths) {
-                System.out.print("Path: ");
-                StringBuilder pathBuilder = new StringBuilder();
-
-                for (int vertex : path) {
-                    if (vertex >= 0 && vertex < locations().length) {
-                        pathBuilder.append(locations()[vertex]).append(" -> ");
-                    }
-                }
-
-                if (pathBuilder.length() > 0) {
-                    pathBuilder.setLength(pathBuilder.length() - 4); // Remove the last " -> "
-                    System.out.println(pathBuilder);
-                }
-            }
-        }
-*/
     }
 
     public static class Solver {

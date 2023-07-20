@@ -53,40 +53,6 @@ public class ShortestPath {
         }
         return path;
     }
-/*
-    public static List<List<Integer>> getBestThreeShortestPaths(int destination) {
-        List<List<Integer>> bestPaths = new ArrayList<>();
-
-        if (distances[destination] == Integer.MAX_VALUE) {
-            return bestPaths; // No paths found
-        }
-
-        Deque<Integer> stack = new ArrayDeque<>();
-        stack.push(destination);
-
-        while (!stack.isEmpty()) {
-            int current = stack.pop();
-
-            if (current == -1) {
-                bestPaths.add(new ArrayList<>(stack));
-                if (bestPaths.size() == 3) {
-                    break;
-                }
-                continue;
-            }
-
-            if (current != destination) {
-                stack.push(current);
-            }
-
-            int prevVertex = previous[current];
-            stack.push(-1); // Marker for backtracking
-            stack.push(prevVertex);
-        }
-
-        return bestPaths;
-    }
-*/
     static class Node {
         private final int vertex;
         private final double distance;
