@@ -4,6 +4,7 @@ This repo contain the following projects:
    1. Euclid GCD
    2. Sieve of Erathosthenes
    3. Finding the Largest Number in an array
+   4. Dynamic Programming - Fibonacci Sequence
 
 2. Searching & Sorting Algorithms 
 3. Semester Project - Transportation Problem
